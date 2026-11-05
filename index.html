@@ -4,20 +4,49 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="manifest" href="/manifest.json" />
-  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-  <link rel="stylesheet" href="/app.css" />
+  <meta name="apple-mobile-web-app-title" content="FOMO Desk" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+  <link rel="icon" href="./icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="./app.css" />
   <title>FOMO Desk</title>
 </head>
 <body>
-  <main id="app">
-    <h1>FOMO Desk</h1>
-    <p class="mode">PAPER</p>
-    <p id="balance">$0.00</p>
-    <p class="hint">Scaffold — full UI in STEP 8</p>
+  <div id="errbar" class="errbar" role="status" aria-live="polite" hidden></div>
+
+  <main id="views">
+    <section id="view-home" class="view" data-tab="home"></section>
+    <section id="view-agents" class="view" data-tab="agents" hidden></section>
+    <section id="view-activity" class="view" data-tab="activity" hidden></section>
+    <section id="view-account" class="view" data-tab="account" hidden></section>
   </main>
-  <script src="/chart.js"></script>
-  <script src="/app.js"></script>
+
+  <!-- pushed screens (Coin, Auditor, Search) -->
+  <div id="sheet" class="sheet" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <nav id="tabbar" class="tabbar" aria-label="Tabs">
+    <button class="tab" data-tab="home" aria-label="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg><span>Home</span>
+    </button>
+    <button class="tab" data-tab="agents" aria-label="Agents">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg><span>Agents</span>
+    </button>
+    <button class="tab" data-tab="activity" aria-label="Activity">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Activity</span>
+    </button>
+    <button class="tab" data-tab="account" aria-label="Account">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.8-4.3 4.2-6.5 8.5-6.5s7.7 2.2 8.5 6.5z"/></svg><span>Account</span>
+    </button>
+  </nav>
+
+  <noscript><p class="noscript">FOMO Desk needs JavaScript.</p></noscript>
+  <script src="./chart.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
